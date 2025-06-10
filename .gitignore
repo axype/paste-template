@@ -1,0 +1,8 @@
+output
+
+*.rbxl
+*.rbxlx
+
+output_rojo/source.luau
+
+sourcemap.json

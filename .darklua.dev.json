@@ -1,0 +1,71 @@
+{
+	"generator": "readable",
+
+	"bundle": {
+		"require_mode": {
+			"name": "path",
+			"sources": {
+				"@client": "./src/client",
+				"@server": "./src/server",
+				"@shared": "./src/shared",
+				"@output": "./output"
+			}
+		}
+	},
+
+	"rules": [
+		"compute_expression",
+		"convert_index_to_field",
+		"remove_comments",
+		"remove_compound_assignment",
+		"remove_continue",
+		"remove_empty_do",
+		"remove_floor_division",
+		"remove_if_expression",
+		"remove_interpolated_string",
+		"remove_nil_declaration",
+		"remove_spaces",
+		"remove_types",
+		"remove_unused_if_branch",
+		"remove_unused_variable",
+		"convert_local_function_to_assign",
+
+		{
+			"rule": "rename_variables",
+			"globals": [
+				"$default",
+				"$roblox",
+				"owner",
+				"rawrequire",
+				"LoadAssets",
+				"compileLua",
+				"compileLuaU",
+				"compile",
+				"axypeFlags",
+				"notify",
+				"NewLocalScript",
+				"NLS",
+				"nLS",
+				"newLocalScript",
+				"NewScript",
+				"NS",
+				"nS",
+				"newScript",
+				"NewPersistentLocalScript",
+				"NPLS",
+				"nPLS",
+				"newPersistentLocalScript",
+				"storage",
+				"xshared",
+				"axype",
+				"isolatedStorage",
+				"GetAsset",
+				"getAsset",
+				"loadAsset",
+				"fetch",
+				"Fetch",
+				"LoadAsset"
+			]
+		}
+	]
+}

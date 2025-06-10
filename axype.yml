@@ -1,0 +1,168 @@
+# axype selene std
+# written for axype v3
+
+globals:
+  # owner
+  owner:
+    any: true
+
+  # rawrequire
+  rawrequire:
+    args:
+      - type: any
+
+  # LoadAssets
+  LoadAssets:
+    args:
+      - type: number
+    must_use: true
+
+  # compileLua
+  compileLua:
+    args:
+      - type: string
+      - type: string
+        required: false
+    must_use: true
+
+  # compileLuaU
+  compileLuaU:
+    args:
+      - type: string
+      - type: string
+        required: false
+      - type: number
+        required: false
+      - type: number
+        required: false
+      - type: number
+        required: false
+    must_use: true
+
+  # compile
+  compile:
+    args:
+      - type: any
+      - type: any
+      - type: any
+      - type: any
+      - type: any
+
+  # notify
+  notify:
+    args:
+      - type: string
+      - type: number
+        required: false
+      - type: { display: Player }
+        required: false
+
+  # NewLocalScript
+  NewLocalScript: &new_local_script
+    args:
+      - type: string
+      - type: { display: Instance }
+      - type: "..."
+        required: false
+  NLS: *new_local_script
+  nLS: *new_local_script
+  newLocalScript: *new_local_script
+
+  # NewPersistentLocalScript
+  NewPersistentLocalScript: &new_persistent_local_script
+    args:
+      - type: string
+      - type: { display: Instance }
+      - type: "..."
+        required: false
+  NPLS: *new_persistent_local_script
+  nPLS: *new_persistent_local_script
+  newPersistentLocalScript: *new_persistent_local_script
+
+  # NewScript
+  NewScript: &new_script
+    args:
+      - type: string
+      - type: { display: Instance }
+      - type: "..."
+        required: false
+  NS: *new_script
+  nS: *new_script
+  newScript: *new_script
+
+  # GetAsset
+  GetAsset: &get_asset
+    args:
+      - type: string
+      - type: bool
+        required: false
+      - type: bool
+        required: false
+    must_use: true
+  getAsset: *get_asset
+  loadAsset: *get_asset
+  fetch: *get_asset
+  Fetch: *get_asset
+  LoadAsset: *get_asset
+
+  # axypeFlags
+  axypeFlags.persistentLocalDestroyUponPing:
+    property: new-fields
+  axypeFlags.isDebuggerEnabled:
+    property: new-fields
+  axypeFlags.BETA_useLuauSupport:
+    property: new-fields
+
+  # xshared
+  xshared:
+    property: new-fields
+
+  # isolatedStorage
+  isolatedStorage:
+    property: new-fields
+
+  # storage
+  storage.get:
+    args:
+      - type: any
+    must_use: true
+  storage.set:
+    args:
+      - type: any
+      - type: any
+  storage.exists:
+    args:
+      - type: any
+    must_use: true
+  storage.remove:
+    args:
+      - type: any
+  storage.getOwner:
+    args:
+      - type: any
+    must_use: true
+  storage.list:
+    args:
+      - type: bool
+        required: false
+    must_use: true
+
+  # axype
+  axype.version:
+    property: read-only
+  axype.script.name:
+    property: read-only
+  axype.script.displayName:
+    property: read-only
+  axype.script.compiler:
+    property: read-only
+  axype.generator.date:
+    property: read-only
+  axype.generator.name:
+    property: read-only
+  axype.creator.name:
+    property: read-only
+  axype.ui.notification:
+    args:
+      - type: string
+      - type: table

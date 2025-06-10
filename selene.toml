@@ -1,0 +1,6 @@
+std = "roblox+axype"
+exclude = ["output/*", "axype.d.luau", "output_rojo/*"]
+
+[lints]
+incorrect_standard_library_use = "allow"
+global_usage = "allow"
