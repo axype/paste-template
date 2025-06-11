@@ -35,8 +35,26 @@ local function build()
 
 	-- Client
 	cprint("purple", "Building client...")
-	spawnAssert("darklua", { "process", "-c", dluaConfig, "src/client/init.luau", "output/client.txt" })
-	fs.writeFile("output/client.luac", compiler(fs.readFile("output/client.txt")))
+
+	local clientEntry = "src/client/init"
+	local useLua = fs.isFile(clientEntry .. ".lua")
+	local useLuau = fs.isFile(clientEntry .. ".luau")
+
+	if not useLua and not useLuau then
+		cprint("red", "define a client init.lua or .luau file!")
+		return
+	end
+
+	cprint("purple", `Using lua{useLuau and "u" or " 5.1"} compiler for client`)
+	spawnAssert("darklua", {
+		"process",
+		"-c",
+		dluaConfig,
+		useLuau and (clientEntry .. ".luau") or (clientEntry .. ".lua"),
+		"output/client.txt",
+	})
+
+	fs.writeFile("output/client.luac", compiler(fs.readFile("output/client.txt"), useLuau))
 	local success, compressed = zstd.zbase64("output/client.luac")
 	if not success or not compressed then
 		cprint("red", "Failed to compress with zstd")
