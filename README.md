@@ -15,7 +15,6 @@ Features:
 Requirements:
 
 - [Rokit](https://github.com/rojo-rbx/rokit)
-- [Zstandard CLI](https://github.com/facebook/zstd/releases/latest) (in PATH)
 
 Run the following command:
 
