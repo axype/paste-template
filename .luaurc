@@ -5,7 +5,7 @@
 		"server": "./src/server",
 		"shared": "./src/shared",
 		"output": "./output",
-		"lune": "~/.lune/.typedefs/0.8.9"
+		"lune": "~/.lune/.typedefs/0.10.4/"
 	},
 	"lintErrors": false,
 	"typeErrors": true

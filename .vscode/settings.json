@@ -1,6 +1,8 @@
 {
 	"luau-lsp.platform.type": "roblox",
 	"luau-lsp.sourcemap.enabled": false,
-	"luau-lsp.types.definitionFiles": ["axype.d.luau"],
+	"luau-lsp.types.definitionFiles": {
+		"axype": "axype.d.luau"
+	},
 	"luau-lsp.plugin.enabled": false
 }

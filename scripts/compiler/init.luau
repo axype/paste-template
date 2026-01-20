@@ -1,7 +1,7 @@
 --!nocheck
 
 local luau = require("@lune/luau")
-local yueliang = require("yueliang")
+local yueliang = require("@self/yueliang")
 
 local function compileU(code)
 	return luau.compile(code, {

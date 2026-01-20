@@ -14,9 +14,9 @@ local function cprint(color: stdio.Color, ...)
 end
 
 local function spawnAssert(...)
-	local proc = process.spawn(...)
+	local proc = process.create(...)
 
-	if not proc.ok then
+	if not proc:status().ok then
 		error(proc.stderr)
 	end
 
@@ -26,11 +26,6 @@ end
 local function build()
 	if not fs.isDir("output") then
 		fs.writeDir("output")
-	end
-
-	if not zstd.isEnabled then
-		cprint("red", "zstd path var is required")
-		return
 	end
 
 	-- Client
@@ -54,14 +49,7 @@ local function build()
 		"output/client.txt",
 	})
 
-	fs.writeFile("output/client.luac", compiler(fs.readFile("output/client.txt"), useLuau))
-	local success, compressed = zstd.zbase64("output/client.luac")
-	if not success or not compressed then
-		cprint("red", "Failed to compress with zstd")
-		return
-	end
-	fs.removeFile("output/client.luac")
-	fs.writeFile("output/client_compressed.txt", compressed)
+	fs.writeFile("output/client_compressed.txt", zstd.zbase64(compiler(fs.readFile("output/client.txt"), useLuau)))
 
 	cprint("green", "Built client!")
 
